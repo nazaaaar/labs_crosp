@@ -1,0 +1,45 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Лабораторна робота №2
+    </ion-title>
+  </ion-toolbar>
+  <ion-toolbar>
+    <ion-title >Виконав студент групи КН-32 Курей Назарій Сергійович<br> Варіант 8</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Завдання 1</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p> Необхідно додати у розроблений в попередній лабораторній роботі застосунок сторінку для візуалізації графічних даних відповідно до варіанту та головне меню для переходів між сторінками. Застосунок повинен містити дві сторінки для кожного з завдань.</p>
+      <br>
+
+      <ion-img src="../../assets/lab2.png" alt = "завданя"/>
+      <br>
+      <ion-input label="Введіт початкове значення X" type="number" id="xn" label-placement="floating" fill="outline" placeholder="Введіт початкове значення X"#Inputxn></ion-input>
+      <br>
+      <ion-input label="Введіт кінцеве значення X" type="number" id="xm" label-placement="floating" fill="outline" placeholder="Введіт кінцеве значення X" #Inputxm></ion-input>
+      <br>
+      <ion-input label="Введіт кількість контрольних точок N" type="number" id="n" label-placement="floating" fill="outline" placeholder="Введіт кількість контрольних точок N" #Inputn></ion-input>
+      <br>
+      <ion-input label="Введіт значення параметра A" type="number" id="a" label-placement="floating" fill="outline" placeholder="Введіт значення параметра A" #Inputa></ion-input>
+      <ion-button expand="block" (click)="tabulate(Inputxn.value,Inputxm.value,Inputn.value,Inputa.value)">
+        <ion-icon slot="start" name="color-wand-outline"></ion-icon>
+        Розрахунок
+      </ion-button>
+      <ion-item>
+        <p>Реузльтат обчисленя </p>
+      </ion-item>
+      <ion-item>
+        <canvas #lineCanvas></canvas>
+      </ion-item>
+      <ion-item *ngFor="let item of data">{{item}}</ion-item>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
