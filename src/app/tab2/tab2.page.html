@@ -1,17 +1,34 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 2
+      Лабораторна робота №1
     </ion-title>
+  </ion-toolbar>
+  <ion-toolbar>
+    <ion-title >Виконав студент групи КН-32 Курей Назарій Сергійович<br> Варіант 8</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Завдання 2</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>На заданому проміжку чисел [a,b] знайдіть кількість чисел, які при діленні на 5 дають в остачі 4, а при діленні на 6 дають в остачі 5.</p>
+      <br>
+      <ion-input label="Введіт перше число" type="number" id="a" label-placement="floating" fill="outline" placeholder="Введіт перше число" #Inputa></ion-input>
+      <br>
+      <ion-input label="Введіт друге число" type="number" id="b" label-placement="floating" fill="outline" placeholder="Введіт друге число" #Inputb></ion-input>
+      <br>
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+      <ion-button expand="block" (click)="res(Inputa.value,Inputb.value)">
+        <ion-icon slot="start" name="color-wand-outline"></ion-icon>
+        Розрахунок
+      </ion-button>
+      <ion-item>
+        <p>Кількість {{d}}</p>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

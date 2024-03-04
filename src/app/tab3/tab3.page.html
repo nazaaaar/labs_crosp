@@ -1,17 +1,36 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 3
+      Лабораторна робота №1
     </ion-title>
+  </ion-toolbar>
+  <ion-toolbar>
+    <ion-title >Виконав студент групи КН-32 Курей Назарій Сергійович<br> Варіант 8</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 3</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Завдання 3</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>Згенерувати матрицю розміром NxN. Виокремити за допомогою кольору усі непарні додатні елементи менше за 25.</p>
+      <br>
+      <ion-input label="Введіт розмір матриці" type="number" id="a" label-placement="floating" fill="outline" placeholder="Введіт перше число" #Inputa></ion-input>
+      <br>
 
-  <app-explore-container name="Tab 3 page"></app-explore-container>
+      <ion-button expand="block" (click)="res(Inputa.value)">
+        <ion-icon slot="start" name="color-wand-outline"></ion-icon>
+        Розрахунок
+      </ion-button>
+      <ion-item>
+        <ion-grid>
+          <ion-row *ngFor="let i of a">
+            <ion-col *ngFor="let j of i" [ngStyle]="{backgroundColor: getColor(j)}"> {{j}}</ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
