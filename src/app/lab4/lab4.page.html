@@ -1,0 +1,51 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Лабораторна робота №4
+    </ion-title>
+  </ion-toolbar>
+  <ion-toolbar>
+    <ion-title >Виконав студент групи КН-32 Курей Назарій Сергійович<br> Варіант 8</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Завдання 1</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p> Скласти програму з абстрактним батьківським класом і двома об'єктами – нащадками.
+        Реалізувати циклічне виведення параметрів об'єктів, використовуючи  поліморфний контейнер - масив об'єктів базового класу (кількість об'єктів> = 5)
+      </p>
+      <br>
+      <ion-img src="../../assets/lab4.png"/>
+      <br>
+      <ion-button expand="block" (click)="displayBirds()">
+        <ion-icon slot="start" name="color-wand-outline"></ion-icon>
+        Розрахунок
+      </ion-button>
+      <br>
+      <ion-list *ngIf="birds.length > 0">
+        <ion-item *ngFor="let bird of birds">
+          {{ bird.toString() }}
+        </ion-item>
+      </ion-list>
+
+      <br>
+      <ion-button expand="block" (click)="calculateTotalFoodRequirement()">
+        <ion-icon slot="start" name="fast-food-outline"></ion-icon>
+        Розрахунок загальної потреби в їжі
+      </ion-button>
+      <br>
+
+      <ion-item *ngIf="totalFoodRequirement > 0">
+        Загальна потреба в їжі: {{ totalFoodRequirement }} одиниць
+      </ion-item>
+    </ion-card-content>
+
+
+  </ion-card>
+</ion-content>
