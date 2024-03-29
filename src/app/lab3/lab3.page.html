@@ -1,0 +1,62 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Лабораторна робота №3
+    </ion-title>
+  </ion-toolbar>
+  <ion-toolbar>
+    <ion-title >Виконав студент групи КН-32 Курей Назарій Сергійович<br> Варіант 8</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Завдання 1</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p> Необхідно додати у розроблений в попередній лабораторній роботі
+        застосунок сторінку для обробки JSON файлу отриманого з серверу.
+        Сторінку викликати у головному меню застосунку.</p>
+      <br>
+      <p>
+        8. Рейтинг успішності студентів:
+        <br> • ПІБ студента.
+        <br> • Група.
+        <br> • Середній бал.
+        <br>• Розмір стипендії.
+        <br> Запит. Позначити кольором студентів, середній бал яких введене у форму
+        значення.
+      </p>
+
+      <br>
+      <ion-input label="Введіт середній бал для пошуку" type="number" id="xn" label-placement="floating" fill="outline" placeholder="Введіт середній бал для пошуку"#Inputxn></ion-input>
+
+      <ion-button expand="block" (click)="load()">
+        <ion-icon slot="start" name="color-wand-outline"></ion-icon>
+        Розрахунок
+      </ion-button>
+        <ion-list>
+          <ion-item button *ngFor="let item of data_users; let i = index" detail (click)="ToggleDetails(i)">
+            <ion-label *ngIf="!showDetails[i]">
+              <div [ngStyle]="{color: getHighlight(item['Average Score'], Inputxn.value)}">
+                <p><span>Ім'я:</span> {{ item['Full Name'] }}</p>
+                <p><span>Група:</span> {{ item['Group'] }}</p>
+              </div>
+            </ion-label>
+            <ion-label *ngIf="showDetails[i]">
+              <div [ngStyle]="{color: getHighlight(item['Average Score'], Inputxn.value)}">
+                <p><span>Повне ім'я:</span> {{ item['Full Name'] }}</p>
+                <p><span>Група:</span> {{ item['Group'] }}</p>
+                <p><span>Середній бал:</span> {{ item['Average Score'] }}</p>
+                <p><span>Розмір стипендії:</span> {{ item['Scholarship Size'] }}</p>
+              </div>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+
+    </ion-card-content>
+  </ion-card>
+</ion-content>
