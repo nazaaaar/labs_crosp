@@ -19,34 +19,6 @@ export abstract class Bird {
   abstract FoodAmount(): number;
 }
 
-export class Eagle extends Bird {
-  private _weight!: number;
-
-  get weight(): number {
-    return this._weight;
-  }
-
-  set weight(value: number) {
-    if (value <= 0) {
-      throw new Error("Weight should be greater than 0");
-    }
-    this._weight = value;
-  }
-
-  constructor(name: string, weight: number) {
-    super(name);
-    this.weight = weight;
-  }
-
-  FoodAmount(): number {
-    return this.weight * 0.02;
-  }
-
-  override toString(){
-    return `ОРЕЛ Ім'я = ${this.name} Вага = ${this.weight} кг`;
-  }
-}
-
 export class Stork extends Bird {
   private _wingspan!: number;
 
@@ -99,6 +71,6 @@ export class Raven extends Bird {
   }
 
   override toString(): string {
-    return `ВОРОНА Ім'я = ${this.name} Розмах крил= ${this.height} см`;
+    return `ВОРОНА Ім'я = ${this.name} Висота= ${this.height} см`;
   }
 }

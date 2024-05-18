@@ -1,4 +1,4 @@
-import {Raven} from "./Class/Bird";
+import {Raven} from "../lab4/Class/Bird";
 
 describe('Тестування ворони', () => {
   let raven: Raven;
@@ -16,11 +16,11 @@ describe('Тестування ворони', () => {
     expect(() => { raven.height = -1 }).toThrow(new Error("Height should be greater than 0"));
   });
 
-  it('should not create class with negative height', () => {
+  it('should not create model with negative height', () => {
     expect(() => { new Raven("Джавелін", -40) }).toThrow(new Error("Height should be greater than 0"));
   });
 
-  it('should not create class with empty name', () => {
+  it('should not create model with empty name', () => {
     expect(() => { new Raven("", 60) }).toThrow(new Error("Name cannot be empty or contain only whitespaces"));
   });
 

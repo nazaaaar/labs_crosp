@@ -1,4 +1,4 @@
-import { Stork } from "./Class/Bird";
+import { Stork } from "../lab4/Class/Bird";
 
 describe('Тестування лелеки', () => {
   let stork: Stork;
@@ -15,11 +15,11 @@ describe('Тестування лелеки', () => {
     expect(() => { stork.wingspan = 0 }).toThrow(new Error("Wingspan should be greater than 0"));
   });
 
-  it('should not create class with negative wingspan', () => {
+  it('should not create model with negative wingspan', () => {
     expect(() => { new Stork("Барон", -180) }).toThrow(new Error("Wingspan should be greater than 0"));
   });
 
-  it('should not create class with empty name', () => {
+  it('should not create model with empty name', () => {
     expect(() => { new Stork("", 180) }).toThrow(new Error("Name cannot be empty or contain only whitespaces"));
   });
 

@@ -1,4 +1,4 @@
-import {Eagle} from "./Class/Bird";
+import {Eagle} from "./Eagle";
 
 describe("Тестування орла", ()=>{
   let eagle: Eagle
@@ -14,10 +14,10 @@ describe("Тестування орла", ()=>{
   it('should throw weight < 0 error', () => {
     expect(()=>{eagle.weight=-1}).toThrow(Error("Weight should be greater than 0"))
   });
-  it('should not create class with negative weight', () => {
+  it('should not create model with negative weight', () => {
     expect(()=>{ new Eagle("Патрон", -4)}).toThrow(Error("Weight should be greater than 0"))
   });
-  it('should not create class with empty name', () => {
+  it('should not create model with empty name', () => {
     expect(()=>{ new Eagle("", 6)}).toThrow(Error("Name cannot be empty or contain only whitespaces"))
   });
   it('should not set name to empty', () => {
