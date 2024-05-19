@@ -4,9 +4,9 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { Lab6PageRoutingModule } from './lab6-routing.module';
+import { Lab7PageRoutingModule } from './lab7-routing.module';
 
-import { Lab6Page } from './lab6.page';
+import { Lab7Page } from './lab7.page';
 import {MyHeaderComponentModule} from "../my-header/my-header.component.module";
 
 @NgModule({
@@ -14,11 +14,9 @@ import {MyHeaderComponentModule} from "../my-header/my-header.component.module";
     CommonModule,
     FormsModule,
     IonicModule,
-    Lab6PageRoutingModule,
-    MyHeaderComponentModule,
+    Lab7PageRoutingModule,
+    MyHeaderComponentModule
   ],
-  exports: [
-  ],
-  declarations: [Lab6Page]
+  declarations: [Lab7Page]
 })
-export class Lab6PageModule {}
+export class Lab7PageModule {}

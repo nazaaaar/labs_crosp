@@ -1,0 +1,70 @@
+<app-my-header name="Лабораторна робота номер 7"></app-my-header>
+<ion-content [fullscreen]="true">
+   <ion-card>
+     <ion-card-header>
+       <h1> Завдання</h1>
+       <p>Провести табулювання, обрахувати за домогою циклу та рекурсії наступну функцію:</p>
+       <ion-img src="../../assets/lab7.png" alt = "завданя"></ion-img>
+     </ion-card-header>
+     <ion-card-content>
+       <form (ngSubmit)="tabulate()">
+         <ion-item>
+           <ion-input [(ngModel)]="Inputxn" name="Inputxn" inputmode="decimal" label="Введіт початкове значення X" type="number" id="xn" label-placement="floating" fill="outline" placeholder="Введіт початкове значення X"></ion-input>
+         </ion-item>
+         <br>
+         <ion-item>
+           <ion-input [(ngModel)]="Inputxm" name="Inputxm" inputmode="decimal" label="Введіт кінцеве значення X" type="number" id="xm" label-placement="floating" fill="outline" placeholder="Введіт кінцеве значення X"></ion-input>
+         </ion-item>
+         <br>
+         <ion-item>
+           <ion-input [(ngModel)]="Inputn" name="Inputn" inputmode="decimal" label="Введіт кількість контрольних точок N" type="number" id="n" label-placement="floating" fill="outline" placeholder="Введіт кількість контрольних точок N"></ion-input>
+         </ion-item>
+         <br>
+         <ion-button expand="block" type="submit">Табулювати!</ion-button>
+       </form>
+
+       <canvas #lineCanvas></canvas>
+
+       <ion-card *ngIf="tabsInput.length>0">
+         <ion-card-header>
+           <ion-card-title>Табулювання</ion-card-title>
+         </ion-card-header>
+         <ion-card-content>
+           <ion-list>
+             <ion-item *ngFor="let tab of tabsInput">
+               {{ tab }}
+             </ion-item>
+           </ion-list>
+         </ion-card-content>
+       </ion-card>
+
+       <ion-card *ngIf="recsInput.length>0">
+         <ion-card-header>
+           <ion-card-title>Рекурсія</ion-card-title>
+         </ion-card-header>
+         <ion-card-content>
+           <ion-list>
+             <ion-item *ngFor="let tab of recsInput">
+               {{ tab }}
+             </ion-item>
+           </ion-list>
+         </ion-card-content>
+       </ion-card>
+
+       <ion-card *ngIf="sersInput.length>0">
+         <ion-card-header>
+           <ion-card-title>Ряди</ion-card-title>
+         </ion-card-header>
+         <ion-card-content>
+           <ion-list>
+             <ion-item *ngFor="let tab of sersInput">
+               {{tab}}
+             </ion-item>
+           </ion-list>
+         </ion-card-content>
+       </ion-card>
+     </ion-card-content>
+
+
+   </ion-card>
+</ion-content>

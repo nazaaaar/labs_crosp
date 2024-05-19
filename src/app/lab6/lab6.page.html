@@ -1,4 +1,151 @@
-<app-my-header name="Лабораторна робота 6"/>
-<ion-content [fullscreen]="true">
-  
+<app-my-header name="Лабораторна робота 6"></app-my-header>
+<ion-content [fullscreen]="true" class="ion-padding">
+
+  <!-- Form to create Place -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Create Place</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <form (ngSubmit)="createPlace()">
+        <ion-item>
+          <ion-input label="Name" label-placement="floating" [(ngModel)]="placeName" name="placeName" required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input label="Latitude" label-placement="floating" [(ngModel)]="placeLatitude" name="placeLatitude" type="number" required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input label="Longitude" label-placement="floating" [(ngModel)]="placeLongitude" name="placeLongitude" type="number" required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input label="Population" label-placement="floating" [(ngModel)]="placePopulation" name="placePopulation" type="number" required></ion-input>
+        </ion-item>
+        <ion-button expand="full" type="submit">Create Place</ion-button>
+      </form>
+      <p *ngIf="place">{{ place.getDetails() }}</p>
+      <form *ngIf="place" (ngSubmit)="onCalculateDensity()">
+        <ion-item>
+          <ion-input label="Area" label-placement="floating" [(ngModel)]="placeArea" name="placeArea" type="number" required></ion-input>
+        </ion-item>
+        <ion-button expand="full" type="submit">Calculate Density</ion-button>
+      </form>
+      <p>{{ placeDensityResult }}</p>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Form to create City -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Create City</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <form (ngSubmit)="createCity()">
+        <ion-item>
+          <ion-input label="Name" label-placement="floating" [(ngModel)]="cityName" name="cityName" required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input label="Latitude" label-placement="floating" [(ngModel)]="cityLatitude" name="cityLatitude" type="number" required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input label="Longitude" label-placement="floating" [(ngModel)]="cityLongitude" name="cityLongitude" type="number" required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input label="Population" label-placement="floating" [(ngModel)]="cityPopulation" name="cityPopulation" type="number" required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input label="Mayor" label-placement="floating" [(ngModel)]="cityMayor" name="cityMayor" required></ion-input>
+        </ion-item>
+        <ion-button expand="full" type="submit">Create City</ion-button>
+      </form>
+      <p *ngIf="city">{{ city.getDetails() }}</p>
+      <form *ngIf="city" (ngSubmit)="onOrganizeEvent()">
+        <ion-item>
+          <ion-input label="Event Name" label-placement="floating" [(ngModel)]="eventName" name="eventName" required></ion-input>
+        </ion-item>
+        <ion-button expand="full" type="submit">Organize Event</ion-button>
+      </form>
+      <p>{{ cityEventResult }}</p>
+      <form *ngIf="city" (ngSubmit)="onImplementPolicy()">
+        <ion-item>
+          <ion-input label="Policy Name" label-placement="floating" [(ngModel)]="policyName" name="policyName" required></ion-input>
+        </ion-item>
+        <ion-button expand="full" type="submit">Implement Policy</ion-button>
+      </form>
+      <p>{{ cityPolicyResult }}</p>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Form to create Metropolis -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Create Metropolis</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <form (ngSubmit)="createMetropolis()">
+        <ion-item>
+          <ion-input label="Name" label-placement="floating" [(ngModel)]="metropolisName" name="metropolisName" required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input label="Latitude" label-placement="floating" [(ngModel)]="metropolisLatitude" name="metropolisLatitude" type="number" required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input label="Longitude" label-placement="floating" [(ngModel)]="metropolisLongitude" name="metropolisLongitude" type="number" required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input label="Population" label-placement="floating" [(ngModel)]="metropolisPopulation" name="metropolisPopulation" type="number" required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input label="Mayor" label-placement="floating" [(ngModel)]="metropolisMayor" name="metropolisMayor" required></ion-input>
+        </ion-item>
+        <ion-button expand="full" type="submit">Create Metropolis</ion-button>
+      </form>
+      <p *ngIf="metropolis">{{ metropolis.getDetails() }}</p>
+      <form *ngIf="metropolis" (ngSubmit)="onAddRegion()">
+        <ion-item>
+          <ion-input label="Region Name" label-placement="floating" [(ngModel)]="regionForMetropolisName" name="regionForMetropolisName" required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input label="Region Population" label-placement="floating" [(ngModel)]="regionForMetropolisPopulation" name="regionForMetropolisPopulation" type="number" required></ion-input>
+        </ion-item>
+        <ion-button expand="full" type="submit">Add Region</ion-button>
+      </form>
+      <p>{{ metropolisRegionResult }}</p>
+      <ion-button *ngIf="metropolis" expand="full" (click)="onAnalyzeRegionData()">Analyze Region Data</ion-button>
+      <p>{{ metropolisAnalyzeResult }}</p>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Form to create Region -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Create Region</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <form (ngSubmit)="createRegion()">
+        <ion-item>
+          <ion-input label="Name" label-placement="floating" [(ngModel)]="regionName" name="regionName" required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input label="Latitude" label-placement="floating" [(ngModel)]="regionLatitude" name="regionLatitude" type="number" required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input label="Longitude" label-placement="floating" [(ngModel)]="regionLongitude" name="regionLongitude" type="number" required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input label="Population" label-placement="floating" [(ngModel)]="regionPopulation" name="regionPopulation" type="number" required></ion-input>
+        </ion-item>
+        <ion-button expand="full" type="submit">Create Region</ion-button>
+      </form>
+      <p *ngIf="region">{{ region.getDetails() }}</p>
+      <ion-button *ngIf="region" expand="full" (click)="onConductCensus()">Conduct Census</ion-button>
+      <p>{{ regionCensusResult }}</p>
+      <form *ngIf="region" (ngSubmit)="onDevelopInfrastructure()">
+        <ion-item>
+          <ion-input label="Infrastructure Plan" label-placement="floating" [(ngModel)]="infrastructurePlan" name="infrastructurePlan" required></ion-input>
+        </ion-item>
+        <ion-button expand="full" type="submit">Develop Infrastructure</ion-button>
+      </form>
+      <p>{{ regionInfrastructureResult }}</p>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

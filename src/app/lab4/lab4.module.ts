@@ -8,6 +8,7 @@ import { Lab4PageRoutingModule } from './lab4-routing.module';
 
 import { Lab4Page } from './lab4.page';
 import {Lab6PageModule} from "../lab6/lab6.module";
+import {MyHeaderComponentModule} from "../my-header/my-header.component.module";
 
 @NgModule({
     imports: [
@@ -15,7 +16,8 @@ import {Lab6PageModule} from "../lab6/lab6.module";
         FormsModule,
         IonicModule,
         Lab4PageRoutingModule,
-        Lab6PageModule
+        Lab6PageModule,
+        MyHeaderComponentModule,
     ],
   declarations: [Lab4Page]
 })
