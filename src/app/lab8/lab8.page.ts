@@ -12,4 +12,5 @@ export class Lab8Page implements OnInit {
   ngOnInit() {
   }
 
+
 }

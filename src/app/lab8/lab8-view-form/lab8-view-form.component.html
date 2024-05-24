@@ -1,0 +1,22 @@
+<app-lab8-form (courseCreated)="onCourseCreated($event)"></app-lab8-form>
+
+<h2>Submitted Courses</h2>
+<div *ngFor="let course of courses; let i = index">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>{{ course.name }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p><strong>Credits:</strong> {{ course.credits }}</p>
+      <p><strong>Teacher Initials:</strong> {{ course.teacherInitials }}</p>
+      <p><strong>Teacher Academic Title:</strong> {{ course.teacherAcademicTitle }}</p>
+      <p><strong>Semester:</strong> {{ course.semester }}</p>
+      <p><strong>Groups:</strong></p>
+      <ul>
+        <li *ngFor="let group of course.groups">{{ group }}</li>
+      </ul>
+    </ion-card-content>
+    <ion-button (click)="onEditClicked(i)">Edit</ion-button>
+    <app-lab8-update-form *ngIf="showEditForms[i]" [course]="course" (courseUpdated)="onCourseUpdated($event, i)"></app-lab8-update-form>
+  </ion-card>
+</div>

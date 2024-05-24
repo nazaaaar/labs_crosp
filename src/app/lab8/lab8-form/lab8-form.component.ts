@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormArray, FormBuilder, FormControl, FormGroup} from "@angular/forms";
 import {Course} from "./class/Course";
 import {groupValidator} from "./class/groupValidator";
@@ -10,7 +10,7 @@ import {semesterValidator} from "./class/semesterValidator";
   styleUrls: ['./lab8-form.component.scss'],
 })
 export class Lab8FormComponent  implements OnInit {
-
+  @Output() courseCreated = new EventEmitter<Course>();
   courseForm: FormGroup;
   course!: Course;
   constructor(private fb: FormBuilder) {
@@ -39,14 +39,9 @@ export class Lab8FormComponent  implements OnInit {
   ngOnInit() {}
 
   onSubmit() {
-    const name = this.courseForm.value.name;
-    const credits = this.courseForm.value.credits;
-    const teacherInitials = this.courseForm.value.teacherInitials;
-    const teacherAcademicTitle = this.courseForm.value.teacherAcademicTitle;
-    const semester = this.courseForm.value.semester;
-    const groups = this.courseForm.value.groups;
-
-    this.course = new Course(name,credits,teacherInitials, teacherAcademicTitle, semester, groups)
+    const { name, credits, teacherInitials, teacherAcademicTitle, semester, groups } = this.courseForm.value;
+    this.course = new Course(name, credits, teacherInitials, teacherAcademicTitle, semester, groups);
     console.log(this.course);
+    this.courseCreated.emit(this.course);
     }
 }
