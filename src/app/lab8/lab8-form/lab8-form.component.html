@@ -1,0 +1,23 @@
+<form [formGroup] ="courseForm" (ngSubmit)="onSubmit()">
+  <ion-card>
+    <ion-card-content>
+      <ion-input type="text" label="Ім'я" formControlName="name"></ion-input>
+      <ion-input type="number" label="Кількість кредитів" formControlName="credits"></ion-input>
+      <ion-input type="text" label="ПІБ Викладача" formControlName="teacherInitials"></ion-input>
+      <ion-input type="text" label="Академічне звання викладача" formControlName="teacherAcademicTitle"></ion-input>
+      <ion-input type="number" label="Семестр" formControlName="semester"></ion-input>
+
+      <ion-card formArrayName="groups">
+        <ion-card-content>
+          <ion-button (click)="addGroup()">+</ion-button>
+          <ion-item *ngFor="let group of getControls(); let i = index">
+            <ion-input type="text" [formControlName]="i" placeholder="назва групи"></ion-input>
+            <ion-button slot="end" (click)="deleteGroup(i)">-</ion-button>
+          </ion-item>
+        </ion-card-content>
+      </ion-card>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-button type="submit" [disabled]="courseForm.invalid">Підтвердити</ion-button>
+</form>

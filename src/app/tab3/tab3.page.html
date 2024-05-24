@@ -27,7 +27,7 @@
       <ion-item>
         <ion-grid>
           <ion-row *ngFor="let i of a">
-            <ion-col *ngFor="let j of i" [ngStyle]="{backgroundColor: getColor(j)}"> {{j}}</ion-col>
+            <ion-col *ngFor="let j of i"> {{j}}</ion-col>
           </ion-row>
         </ion-grid>
       </ion-item>
