@@ -1,0 +1,54 @@
+<app-my-header name="Лабораторна робота номер 10">
+
+</app-my-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>{{ tovarType.name }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item *ngFor="let tovar of tovarList.tovarsSearchString">
+          {{ tovar }}
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Add New Tovar</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <form (ngSubmit)="addTovar()">
+        <ion-item>
+          <ion-input label="Name" labelPlacement="floating" [(ngModel)]="newTovarName" name="name" required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input label="Price" labelPlacement="floating" type="number" [(ngModel)]="newTovarPrice" name="price" required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input label="Description" labelPlacement="floating" [(ngModel)]="newTovarDescription" name="description" required></ion-input>
+        </ion-item>
+        <ion-button expand="full" type="submit">Add Tovar</ion-button>
+      </form>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Add New Tovar Type</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <form (ngSubmit)="addTovarType()">
+        <ion-item>
+          <ion-input label="Type Name" labelPlacement="floating" [(ngModel)]="newTovarTypeName" name="typeName" required></ion-input>
+        </ion-item>
+        <ion-button expand="full" type="submit">Add Tovar Type</ion-button>
+      </form>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-button expand="full" (click)="nextTovarType()">Next Tovar Type</ion-button>
+</ion-content>
